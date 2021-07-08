@@ -101,4 +101,14 @@ class Dataset:
         train_dataset = self.prepare_data(train_images, train_annos)
         val_dataset = self.prepare_data(val_images, val_annos)
         test_dataset = self.prepare_data(test_images, test_annos)
+        train_dataset = train_dataset.shuffle(
+            512).repeat().batch(self.BATCH_SIZE)
+
+        train_dataset = train_dataset.prefetch(tf.data.AUTOTUNE)
+
+        val_dataset = val_dataset.shuffle(200).batch(
+            self.BATCH_SIZE).prefetch(tf.data.AUTOTUNE)
+        test_dataset = test_dataset.shuffle(
+            100).batch(1).prefetch(tf.data.AUTOTUNE)
+
         return train_dataset, val_dataset, test_dataset

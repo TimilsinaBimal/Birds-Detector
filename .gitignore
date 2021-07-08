@@ -142,3 +142,6 @@ data/*
 
 # Virtual Documents
 .virtual_documents/
+
+# Saved Models
+models/*

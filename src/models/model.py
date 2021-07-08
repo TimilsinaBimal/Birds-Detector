@@ -3,7 +3,7 @@ from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2
 from utils.config import *
 
 
-def model():
+def get_model():
     mobile_net_model = MobileNetV2(
         include_top=False,
         input_shape=(IMAGE_HEIGHT, IMAGE_WIDTH, CHANNELS))
